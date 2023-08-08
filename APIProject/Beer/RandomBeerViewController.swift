@@ -16,6 +16,7 @@ class RandomBeerViewController: UIViewController {
     @IBOutlet var beerName: UILabel!
     @IBOutlet var beerDescription: UILabel!
     
+    @IBOutlet var refreshButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,10 @@ class RandomBeerViewController: UIViewController {
         callRequest()
     }
     
-
+    @IBAction func refreshButtonClicked(_ sender: UIButton) {
+        callRequest()
+    }
+    
 
 }
 
@@ -33,12 +37,17 @@ extension RandomBeerViewController{
         titleLabel.text = "랜덤으로 맥주를 추천해드려요!"
         titleLabel.textAlignment = .center
         titleLabel.font = .boldSystemFont(ofSize: 20)
+        titleLabel.numberOfLines = 0
         
         beerName.textAlignment = .center
         beerName.font = .boldSystemFont(ofSize: 17)
         
         beerDescription.numberOfLines = 0
         beerDescription.font = .boldSystemFont(ofSize: 15)
+        
+        refreshButton.setTitle("다른 맥주를 추천해드려요!", for: .normal)
+        refreshButton.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
+        refreshButton.tintColor = .brown
     }
     
     func callRequest() {
